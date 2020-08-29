@@ -1,0 +1,6 @@
+### JetBrains
+.idea/
+BREFScraper.iml
+
+### Maven
+target/
