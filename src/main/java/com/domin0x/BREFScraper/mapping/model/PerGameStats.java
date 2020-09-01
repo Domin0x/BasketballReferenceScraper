@@ -1,14 +1,16 @@
 package com.domin0x.BREFScraper.mapping.model;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 import java.math.BigDecimal;
 
 public class PerGameStats {
-
+    @JsonUnwrapped
     private Team team;
+    @JsonUnwrapped
     private Player player;
-    private String externalId;
     private SeasonType seasonType;
-    private int season;
+    private int year;
     private int gamesPlayed;
     private int gamesStarted;
     private BigDecimal mp;
@@ -39,16 +41,12 @@ public class PerGameStats {
         return player;
     }
 
-    public String getExternalId() {
-        return externalId;
-    }
-
     public SeasonType getSeasonType() {
         return seasonType;
     }
 
-    public int getSeason() {
-        return season;
+    public int getYear() {
+        return year;
     }
 
     public int getGamesPlayed() {
@@ -139,9 +137,8 @@ public class PerGameStats {
 
         private Team team;
         private Player player;
-        private String externalId;
         private SeasonType seasonType;
-        private int season;
+        private int year;
         private int gamesPlayed;
         private int gamesStarted;
         private BigDecimal mp;
@@ -177,18 +174,13 @@ public class PerGameStats {
             return Builder.this;
         }
 
-        public Builder setExternalId(String externalId){
-            this.externalId = externalId;
-            return Builder.this;
-        }
-
         public Builder setSeasonType(SeasonType seasonType){
             this.seasonType = seasonType;
             return Builder.this;
         }
 
-        public Builder setSeason(int season){
-            this.season = season;
+        public Builder setYear(int year){
+            this.year = year;
             return Builder.this;
         }
 
@@ -306,8 +298,7 @@ public class PerGameStats {
     private PerGameStats(Builder builder) {
         this.team = builder.team;
         this.player = builder.player;
-        this.externalId = builder.externalId;
-        this.season = builder.season;
+        this.year = builder.year;
         this.seasonType = builder.seasonType;
         this.gamesPlayed = builder.gamesPlayed;
         this.gamesStarted = builder.gamesStarted;
