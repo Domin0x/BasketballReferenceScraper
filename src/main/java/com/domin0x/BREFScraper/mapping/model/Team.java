@@ -15,7 +15,7 @@ public class Team {
 
     public Team (Element parentElement){
         Optional<Element> optionalLink = ElementParser.getOptionalLinkElement(parentElement);
-        this.abbreviation = optionalLink.map(link -> link.text()).orElse(parentElement.text());
+        this.abbreviation = optionalLink.map(Element::text).orElse(parentElement.text());
         this.externalId = optionalLink.map(link -> link.attr("href")).orElse("");
     }
 
