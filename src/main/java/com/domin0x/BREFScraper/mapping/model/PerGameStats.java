@@ -1,36 +1,61 @@
 package com.domin0x.BREFScraper.mapping.model;
 
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvRecurse;
 
 import java.math.BigDecimal;
 
 public class PerGameStats {
-    @JsonUnwrapped
+    @CsvRecurse
     private Team team;
-    @JsonUnwrapped
+    @CsvRecurse
     private Player player;
+    @CsvBindByName
     private SeasonType seasonType;
+    @CsvBindByName
     private int year;
+    @CsvBindByName
     private int gamesPlayed;
+    @CsvBindByName
     private int gamesStarted;
+    @CsvBindByName
     private BigDecimal mp;
+    @CsvBindByName
     private BigDecimal fgm;
+    @CsvBindByName
     private BigDecimal fga;
+    @CsvBindByName
     private BigDecimal fg3m;
+    @CsvBindByName
     private BigDecimal fg3a;
+    @CsvBindByName
     private BigDecimal ftm;
+    @CsvBindByName
     private BigDecimal fta;
+    @CsvBindByName
     private BigDecimal oreb;
+    @CsvBindByName
     private BigDecimal dreb;
+    @CsvBindByName
     private BigDecimal reb;
+    @CsvBindByName
     private BigDecimal ast;
+    @CsvBindByName
     private BigDecimal blk;
+    @CsvBindByName
     private BigDecimal stl;
+    @CsvBindByName
     private BigDecimal tov;
+    @CsvBindByName
     private BigDecimal pf;
+    @CsvBindByName
     private BigDecimal pts;
+    @CsvBindByName
     private BigDecimal fg_pct;
+    @CsvBindByName
     private BigDecimal fg3_pct;
+    @CsvBindByName
     private BigDecimal ft_pct;
 
     public Team getTeam() {

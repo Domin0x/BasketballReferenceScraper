@@ -16,6 +16,6 @@ public class PlayerTest {
         Player player = new Player(element);
 
         assertEquals("Steven Adams", player.getName());
-        assertEquals("/players/a/adamsst01.html", player.getExternalId());
+        assertEquals("adamsst01", player.getExternalId());
     }
 }
