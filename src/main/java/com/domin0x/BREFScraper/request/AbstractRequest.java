@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.Map;
 
 public abstract class AbstractRequest <T> {
-    private HTMLDocumentService HTMLDocumentService;
+    private HTMLDocumentService HTMLDocumentService = BasketballRefClient.DEFAULT_DOCUMENT_SERVICE;
     private URI uri;
     private Map<String, String> pathParams;
 
@@ -21,7 +21,6 @@ public abstract class AbstractRequest <T> {
     }
 
     protected AbstractRequest(Map<String,String> map){
-        HTMLDocumentService = new HTMLDocumentService();
         pathParams = map;
         URIBuilder uriBuilder = new URIBuilder();
         uriBuilder.setScheme(BasketballRefClient.SCHEME)
