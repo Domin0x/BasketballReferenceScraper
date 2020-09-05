@@ -3,7 +3,7 @@ package com.domin0x.BREFScraper.mapping.model;
 import org.jsoup.nodes.Element;
 import org.junit.Test;
 
-import static com.domin0x.BREFScraper.mapping.model.ElementHelper.createFromStringHTML;
+import static com.domin0x.BREFScraper.ElementHelper.createFromStringHTML;
 import static org.junit.Assert.assertEquals;
 
 
