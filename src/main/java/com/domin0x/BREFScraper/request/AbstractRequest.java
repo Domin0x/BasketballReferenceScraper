@@ -32,6 +32,11 @@ public abstract class AbstractRequest <T> {
             e.printStackTrace(); //TODO Logger
         }
     }
+
+    public URI getUri(){
+        return uri;
+    }
+
     public abstract T execute() throws IOException;
 
     protected abstract String createPath();
