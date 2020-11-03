@@ -36,16 +36,15 @@ public class PerGameStatsRequest extends AbstractRequest<List<PerGameStats>> {
     @Override
     public List<PerGameStats> execute() throws IOException {
         Document document = getDocument();
-        Elements elements = document.select("#per_game_stats > tbody > tr:not(.thead)");
+        Elements tableRows = document.select("#per_game_stats > tbody > tr:not(.thead)");
 
-        return elements.stream()
+        return tableRows.stream()
                 .map(this::createStatLine)
                 .collect(Collectors.toList());
     }
 
-    private PerGameStats createStatLine(Element element){
-        Map<String, Element> colsMap =
-                element.select("td").stream().collect(Collectors.toMap(e->e.attr("data-stat"), Function.identity()));
+    private PerGameStats createStatLine(Element rowElement){
+        Map<String, Element> colsMap = getCellsByName(rowElement);
 
         return new PerGameStats.Builder()
                 .setTeam(new Team(colsMap.get("team_id")))
@@ -76,4 +75,7 @@ public class PerGameStatsRequest extends AbstractRequest<List<PerGameStats>> {
                 .build();
     }
 
+    private Map<String, Element> getCellsByName(Element rowElement) {
+        return rowElement.select("td").stream().collect(Collectors.toMap(e->e.attr("data-stat"), Function.identity()));
+    }
 }

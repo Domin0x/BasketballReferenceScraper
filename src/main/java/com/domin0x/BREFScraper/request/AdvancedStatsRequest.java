@@ -33,16 +33,15 @@ public class AdvancedStatsRequest extends AbstractRequest<List<AdvancedStats>> {
     @Override
     public List<AdvancedStats> execute() throws IOException {
         Document document = getDocument();
-        Elements elements = document.select("#advanced_stats > tbody > tr:not(.thead)");
+        Elements tableRows = document.select("#advanced_stats > tbody > tr:not(.thead)");
 
-        return elements.stream()
+        return tableRows.stream()
                 .map(this::createStatLine)
                 .collect(Collectors.toList());
     }
 
-    private AdvancedStats createStatLine(Element element){
-        Map<String, Element> colsMap =
-                element.select("td").stream().collect(Collectors.toMap(e->e.attr("data-stat"), Function.identity()));
+    private AdvancedStats createStatLine(Element rowElement){
+        Map<String, Element> colsMap = getCellsByName(rowElement);
 
         return new AdvancedStats.Builder()
                 .setTeam(new Team(colsMap.get("team_id")))
@@ -74,4 +73,7 @@ public class AdvancedStatsRequest extends AbstractRequest<List<AdvancedStats>> {
                 .build();
     }
 
+    private Map<String, Element> getCellsByName(Element rowElement) {
+        return rowElement.select("td").stream().collect(Collectors.toMap(e->e.attr("data-stat"), Function.identity()));
+    }
 }
